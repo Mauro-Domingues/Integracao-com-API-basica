@@ -25,7 +25,7 @@ class ObjectRepository {
   async create(objectData){
     const conn = await db.connectToMySql();
     const query = "INSERT INTO object(ID, name, etc) VALUES(?, ?, ?)";
-    const [object] = await conn.query(query, [
+    const object = await conn.query(query, [
       objectData.ID,
       objectData.name,
       objectData.etc
@@ -38,7 +38,7 @@ class ObjectRepository {
   async update(ID, objectData){
     const conn = await db.connectToMySql();
     const query = "UPDATE object SET name = ?, etc = ? WHERE ID = ?";
-    const [object] = await conn.query(query, [
+    const object = await conn.query(query, [
       objectData.name,
       objectData.etc,
       ID
@@ -51,7 +51,7 @@ class ObjectRepository {
   async delete(ID){
     const conn = await db.connectToMySql();
     const query = "DELETE FROM object WHERE ID = ?";
-    const [object] = await conn.query(query, [ID]);
+    const object = await conn.query(query, [ID]);
   }
 
 }
